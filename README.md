@@ -37,7 +37,7 @@ Minimal serial I/O endpoint. Parses newline-terminated commands from the PC and 
 
 ### Requirements
 
-* Python 3.9+
+* Python 3.10+
 * Packages: `PySide6`, `opencv-python`, `numpy`, `pyserial`
 * OS: Windows verified
 
@@ -69,7 +69,7 @@ python In_Trigger_GUI.py
 
 **Serial protocol**
 
-* ROI `i` maps to Arduino digital pin `i+2`.
+* ROI `i` maps to Arduino digital pin `i+1`.
 * Commands from PC (newline-terminated):
 
   * `N<pin>` → set HIGH
