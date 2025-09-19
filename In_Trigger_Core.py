@@ -6,7 +6,6 @@
 import os, time, datetime, collections
 import cv2, numpy as np
 
-# Quiet OpenCV + prefer stable backends
 os.environ.setdefault("OPENCV_LOG_LEVEL", "SILENT")
 os.environ.setdefault("OPENCV_VIDEOIO_PRIORITY_MSMF", "1000")
 os.environ.setdefault("OPENCV_VIDEOIO_PRIORITY_DSHOW", "500")
@@ -179,7 +178,7 @@ class Engine:
             try: _ser.close()
             except: pass
 
-    # ---------- camera ops (blocking; call from worker) ----------
+    # ---------- camera ops ----------
     def _open_camera(self, index: int):
         self.CAM_INDEX = int(index)
         def _try_open(idx, backend):
@@ -209,7 +208,7 @@ class Engine:
         try:
             if pw:  self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, int(pw))
             if ph:  self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, int(ph))
-            pass  # FPS setting removed by request
+            pass  
         except Exception:
             pass
 
@@ -681,3 +680,4 @@ class Engine:
         (tw, th), bl = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, scale, thickness)
         org = (w - tw - margin, h - bl - margin)
         cv2.putText(img, text, org, cv2.FONT_HERSHEY_SIMPLEX, scale, color, thickness, cv2.LINE_AA)
+
